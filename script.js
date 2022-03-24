@@ -8,9 +8,9 @@ videoPlayer.addEventListener("click", function(){
 
     if(video.paused){
         video.play();
-        play.setAttribute("src", "./assets/pause.jpg");
+        play.setAttribute("src", "./images/pause.jpg");
     } else{
         video.pause();
-        play.setAttribute("src", "./assets/play.png");
+        play.setAttribute("src", "./images/play.png");
     }
 })
