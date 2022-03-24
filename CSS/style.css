@@ -1,0 +1,45 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(21, 21, 21);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#container{
+    position: relative;
+    width: 500px;
+    height: 282px;
+    box-sizing: border-box;
+    margin: auto;
+    border: 1px solid yellow;
+}
+
+#video{
+    width: 100%;
+}
+
+#controle{
+    text-align: center;
+    position: absolute;
+    top: 0;
+    opacity: 0%;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    transition: 200ms ease-in-out;
+}
+
+#container:hover #controle{
+    visibility: visible;
+    opacity: 100%;
+}
+
+#buttonPlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+}
+
+
