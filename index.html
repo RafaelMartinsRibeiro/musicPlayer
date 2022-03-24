@@ -1,20 +1,32 @@
 <!DOCTYPE html>
- <html>
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="./CSS/style.css" rel="stylesheet">
-        <title>Rascunho</title>
+        <link href="./images/Icon.png" rel="icon" type="image/png">
+
+        <title>Churrascômetro</title>
+        
     </head>
 
     <body>
-        <div id="container">
-            <video id="video" src="./assets/NoNoNo.mp4"></video>
+        <div id="playerContainer">
+            <audio id="player">
+                <source id="audio" src="assets/music.mp3" type="audio/mpeg">
+            </audio>
 
-            <div id="controle"> 
-                <img id="buttonPlay" src="./images/play.png">
+            <div class="controls">
+                <img id="playlist" src="images/playslist.png">
+                
+                <img class="buttons" src="images/shuffle.png">
+                <img class="buttons" src="images/rewind.png">
+                <img id="play" src="images/play.png">
+                <img class="buttons" src="images/forward.png">
+                <img class="buttons" src="images/repeat.png">
+                
             </div>
         </div>
         <script src="script.js"></script>
     </body>
- </html>
+</html>

@@ -5,41 +5,50 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#container{
-    position: relative;
-    width: 500px;
-    height: 282px;
-    box-sizing: border-box;
-    margin: auto;
-    border: 1px solid yellow;
-}
-
-#video{
-    width: 100%;
-}
-
-#controle{
-    text-align: center;
+#playerContainer{
+    margin-top: 10px;
+    width: 550px;
+    height: 550px;
+    display: inline-block;
+    background-color: #FFFFFF;
+    padding: 50px;
     position: absolute;
-    top: 0;
-    opacity: 0%;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    transition: 200ms ease-in-out;
-}
-
-#container:hover #controle{
-    visibility: visible;
-    opacity: 100%;
-}
-
-#buttonPlay{
-    position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
+    transform: translate(-50%, -10%);
+    text-align: center;
+    border: 4px solid #5F4BB6;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0px 7px 1px, inset rgb(44, 0, 102) 0 0px 9px, #3f317a 0 0px 14px;
+}
+
+.controls{
+    position: relative;
+    top: 520px;
+}
+
+#playlist{
+    float: right;
+    margin-left: -40px;
+    width: 40px;
+    height: 40px;
+}
+
+#play{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 34px;
+    height: 34px;
+    border: 3px solid #5F4BB6;
+    background-color: #5F4BB6;
+    border-radius: 50%;
+}
+
+.buttons{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
 }
 
 
