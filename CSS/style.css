@@ -22,6 +22,38 @@ body{
     box-shadow: rgba(0, 0, 0, 0.2) 0 0px 7px 1px, inset rgb(44, 0, 102) 0 0px 9px, #3f317a 0 0px 14px;
 }
 
+#progressBar{
+    width: 500px;
+    height: 7px;
+    margin: auto;
+    position: relative;
+    top: 500px;
+    background-color: rgba(68, 68, 68, 0.507);
+    cursor: pointer;
+}
+
+#progressed{
+    float: left;
+    margin: auto;
+    width: 10%;
+    height: 7px;
+    background-color: #5F4BB6;
+    position: relative;
+}
+
+#progressBar:hover #progressed:before{
+    content: "";
+    background-color: #ffffff;
+    border: 2px solid #5F4BB6;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .controls{
     position: relative;
     top: 520px;
