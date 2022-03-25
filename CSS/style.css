@@ -8,7 +8,7 @@ body{
 
 #playerContainer{
     margin-top: 10px;
-    width: 550px;
+    width: 600px;
     height: 550px;
     display: inline-block;
     background-color: #FFFFFF;
@@ -18,27 +18,34 @@ body{
     left: 50%;
     transform: translate(-50%, -10%);
     text-align: center;
-    border: 4px solid #5F4BB6;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 0px 7px 1px, inset rgb(44, 0, 102) 0 0px 9px, #3f317a 0 0px 14px;
+    box-shadow: inset 0px 0px 8px 6px rgba(0,0,0,0.75);
 }
 
 #musicContainer{
     position: relative;
+    top: 40px;
     margin: auto;
     width: 500px;
     height: 475px;
-    /* border: 1px solid yellow; */
 }
 
 #musicImage{
     width: 400px;
     border-radius: 30px;
     box-shadow: 5px 7px 9px 3px rgba(38,38,38,0.79);
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+}
+
+#musicName{
+    margin-top: 10px;
+    font-size: 25px;
+    color: #4f39b1;
+}
+
+#artistName{
+    margin-top: -25px;
+    font-size: 25px;
+    color: rgba(116, 85, 255, 0.603);
 }
 
 #progressBar{
@@ -89,8 +96,57 @@ body{
 #playlist{
     float: right;
     margin-left: -40px;
+    position: relative;
+    top: -550px;
+    right: -30px;
     width: 40px;
     height: 40px;
+    cursor: pointer;
+}
+
+#volume{
+    float: left;
+    margin-right: -20px;
+    position: relative;
+    top: 14px;
+    left: -25px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#volumeBar{
+    width: 120px;
+    height: 4px;
+    position: relative;
+    top: 22px;
+    background-color: rgba(68, 68, 68, 0.274);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#currentVolume{
+    float: left;
+    margin: auto;
+    width: 10%;
+    height: 4px;
+    background-color: #5F4BB6;
+    border-radius: 10px;
+    position: relative;
+}
+
+#volumeBar:hover #currentVolume:before{
+    content: "";
+    background-color: #ffffff;
+    border: 2px solid #5F4BB6;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
 
 #play{
@@ -101,6 +157,7 @@ body{
     border: 3px solid #5F4BB6;
     background-color: #5F4BB6;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .buttons{
@@ -108,6 +165,7 @@ body{
     margin-left: 10px;
     width: 40px;
     height: 40px;
+    cursor: pointer;
 }
 
 
