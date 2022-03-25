@@ -2,7 +2,8 @@ body{
     margin: 0px;
     padding: 0px;
     background-color: rgb(21, 21, 21);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: monospace;
+    font-weight: 1000;
 }
 
 #playerContainer{
@@ -22,14 +23,17 @@ body{
     box-shadow: rgba(0, 0, 0, 0.2) 0 0px 7px 1px, inset rgb(44, 0, 102) 0 0px 9px, #3f317a 0 0px 14px;
 }
 
+
+
 #progressBar{
     width: 500px;
     height: 7px;
     margin: auto;
     position: relative;
-    top: 500px;
-    background-color: rgba(68, 68, 68, 0.507);
+    top: 470px;
+    background-color: rgba(68, 68, 68, 0.274);
     cursor: pointer;
+    border-radius: 10px;
 }
 
 #progressed{
@@ -38,6 +42,7 @@ body{
     width: 10%;
     height: 7px;
     background-color: #5F4BB6;
+    border-radius: 10px;
     position: relative;
 }
 
@@ -52,6 +57,12 @@ body{
     right: -4px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+#time{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .controls{
