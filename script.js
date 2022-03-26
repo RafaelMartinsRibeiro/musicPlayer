@@ -38,6 +38,9 @@ window.addEventListener("load", function(){
     function loadMusic(trackIndex){
         audio.src = trackList[trackIndex].audioSrc;
         audioControl.load();
+        musicName.innerText = trackList[trackIndex].name;
+        image.src = trackList[trackIndex].image;
+        artistName.innerText = trackList[trackIndex].artist;
     }
     
     function playVerify(){
