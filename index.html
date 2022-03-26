@@ -4,16 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="./CSS/style.css" rel="stylesheet">
-        <link href="./images/Icon.png" rel="icon" type="image/png">
+        <link href="images/IconPage.png" rel="icon" type="image/png">
 
-        <title>Churrascômetro</title>
+        <title>Purple Music</title>
         
     </head>
 
     <body>
         <div id="playerContainer">
-            <audio id="player">
-                <source id="audio" src="assets/music.mp3" type="audio/mpeg">
+            <audio id="audioControl">
+                <source  id="audio" src="assets/music1.mp3" type="audio/mpeg">
             </audio>
 
             <h1 id="title">Now Playing</h1>
@@ -30,8 +30,8 @@
                 <div id="progressed"></div>
 
                 <div id="time">
-                    <span>00:00</span>
-                    <span>00:00</span>
+                    <span id="currentTime">00:00</span>
+                    <span id="totalTime">00:00</span>
                 </div>
             </div>
             <div class="controls">
@@ -44,11 +44,11 @@
                     
                 </div>
 
-                <img class="buttons" src="images/shuffle.png">
-                <img class="buttons" src="images/rewind.png">
+                <img id="shuffle" class="buttons" src="images/shuffle.png">
+                <img id="rewind" class="buttons" src="images/rewind.png">
                 <img id="play" src="images/play.png">
-                <img class="buttons" src="images/forward.png">
-                <img class="buttons" src="images/repeat.png">
+                <img id="forward" class="buttons" src="images/forward.png">
+                <img id="repeat" class="buttons" src="images/repeat.png">
                 
             </div>
         </div>
