@@ -38,6 +38,7 @@ body{
 
 #musicImage{
     width: 400px;
+    height: 350px;
     border-radius: 30px;
     box-shadow: 5px 7px 9px 3px rgba(38,38,38,0.79);
 }
