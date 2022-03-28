@@ -90,6 +90,9 @@ body{
 }
 
 #time{
+    position: absolute;
+    top: 555px;
+    left: 200px;
     width: 500px;
     display: flex;
     justify-content: space-between;

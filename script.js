@@ -26,6 +26,7 @@ window.addEventListener("load", function(){
     const musicName = document.getElementById("musicName");
     const artistName = document.getElementById("artistName");
     const progress = document.getElementById("progressed");
+    const progressBar = document.getElementById("progressBar")
     const musicTime = document.getElementById("currentTime");
     const totalTime = document.getElementById("totalTime");
     const playlist = document.getElementById("playlist");
@@ -133,6 +134,23 @@ window.addEventListener("load", function(){
         totalTime.innerText = `${totalMin}:${totalSec}`;
     }
 
+    function selectMusicTime(x){
+        let progressVal = progressBar.clientWidth;
+        let clickedOffSetX = x.offsetX;
+        let duration = audioControl.duration;
+        
+        audioControl.currentTime = (clickedOffSetX / progressVal) * duration;
+    }
+
+    function endMusic(){
+        let currentTime = audioControl.currentTime;
+        let duration = audioControl.duration;
+
+        if(currentTime == duration){
+            nextMusic();
+        }
+    }
+
     play.addEventListener("click", function(){
         playMusic();
     })
@@ -147,11 +165,15 @@ window.addEventListener("load", function(){
 
     audioControl.addEventListener("timeupdate", function(){
         timeUpdate();
+        endMusic();
 
         audioControl.addEventListener("loadeddata", function(){
             totalTimeUpdate();
         })
-        
+    })
+
+    progressBar.addEventListener("click", function(x){
+        selectMusicTime(x);
     })
 }) 
 
