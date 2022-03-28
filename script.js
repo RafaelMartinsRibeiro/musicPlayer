@@ -30,7 +30,7 @@ window.addEventListener("load", function(){
     const musicTime = document.getElementById("currentTime");
     const totalTime = document.getElementById("totalTime");
     const playlist = document.getElementById("playlist");
-    const volume = document.getElementById("volume");
+    const mute = document.getElementById("volume");
     const volumeBar = document.getElementById("volumeBar")
     const currentVolume = document.getElementById("currentVolume");
     const volumePercent = document.getElementById("currentVolumeValue")
@@ -42,7 +42,7 @@ window.addEventListener("load", function(){
 
     let isPlaying = false; 
     let currentMusic = 0;
-    loadMusic(currentMusic) ;
+    loadMusic(currentMusic);
 
     function loadMusic(trackIndex){
         audio.src = trackList[trackIndex].audioSrc;
@@ -112,7 +112,7 @@ window.addEventListener("load", function(){
             sec = `0${sec}`;
         }
         if(min < 10){
-            min = `0${min}`
+            min = `0${min}`;
         }
         
         progress.style.width = `${progressWidth}%`;
@@ -128,7 +128,7 @@ window.addEventListener("load", function(){
             totalSec = `0${totalSec}`;
         }
         if(totalMin < 10){
-            totalMin = `0${totalMin}`
+            totalMin = `0${totalMin}`;
         }
         
         totalTime.innerText = `${totalMin}:${totalSec}`;
@@ -159,12 +159,12 @@ window.addEventListener("load", function(){
         
         if(volumePercentValue > 0){
             audioControl.volume = (parseFloat(volumeWidth.toFixed(2)));
-            volumePercent.innerText = `${volumePercentValue}%`
-            currentVolume.style.width = `${volumeWidth * 100}%`
+            volumePercent.innerText = `${volumePercentValue}%`;
+            currentVolume.style.width = `${volumeWidth * 100}%`;
         }else{
             audioControl.volume = 0;
             volumePercent.innerText = "0%";
-            currentVolume.style.width = "1%"
+            currentVolume.style.width = "1%";
         }
         
     }
