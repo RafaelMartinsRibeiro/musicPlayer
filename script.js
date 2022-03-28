@@ -26,7 +26,7 @@ window.addEventListener("load", function(){
     const musicName = document.getElementById("musicName");
     const artistName = document.getElementById("artistName");
     const progress = document.getElementById("progressed");
-    const currentTime = document.getElementById("currentTime");
+    const musicTime = document.getElementById("currentTime");
     const totalTime = document.getElementById("totalTime");
     const playlist = document.getElementById("playlist");
     const volume = document.getElementById("volume");
@@ -40,7 +40,7 @@ window.addEventListener("load", function(){
     let isPlaying = false; 
     let currentMusic = 0;
     loadMusic(currentMusic) ;
-    
+
     function loadMusic(trackIndex){
         audio.src = trackList[trackIndex].audioSrc;
         audioControl.load();
@@ -100,6 +100,39 @@ window.addEventListener("load", function(){
         }
     }
 
+    function timeUpdate(){
+        let currentTime = audioControl.currentTime;
+        let duration = audioControl.duration;
+        let progressWidth = (currentTime / duration) * 100;
+        let min = Math.floor(currentTime / 60);
+        let sec = Math.floor(currentTime % 60);
+
+        if(sec < 10){
+            sec = `0${sec}`;
+        }
+        if(min < 10){
+            min = `0${min}`
+        }
+        
+        progress.style.width = `${progressWidth}%`;
+        musicTime.innerText = `${min}:${sec}`;
+    }
+
+    function totalTimeUpdate(){
+        let duration = audioControl.duration;
+        let totalMin = Math.floor(duration / 60);
+        let totalSec = Math.floor(duration % 60);
+
+        if(totalSec < 10){
+            totalSec = `0${totalSec}`;
+        }
+        if(totalMin < 10){
+            totalMin = `0${totalMin}`
+        }
+        
+        totalTime.innerText = `${totalMin}:${totalSec}`;
+    }
+
     play.addEventListener("click", function(){
         playMusic();
     })
@@ -110,6 +143,15 @@ window.addEventListener("load", function(){
 
     forward.addEventListener("click", function(){
         nextMusic();
+    })
+
+    audioControl.addEventListener("timeupdate", function(){
+        timeUpdate();
+
+        audioControl.addEventListener("loadeddata", function(){
+            totalTimeUpdate();
+        })
+        
     })
 }) 
 
