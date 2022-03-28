@@ -40,9 +40,11 @@ window.addEventListener("load", function(){
     const forward = document.getElementById("forward");
     const repeat = document.getElementById("repeat");
 
+    let volumeOn = false;
     let isPlaying = false; 
     let currentMusic = 0;
     loadMusic(currentMusic);
+    localStorage.clear();
 
     function loadMusic(trackIndex){
         audio.src = trackList[trackIndex].audioSrc;
@@ -50,6 +52,7 @@ window.addEventListener("load", function(){
         musicName.innerText = trackList[trackIndex].name;
         image.src = trackList[trackIndex].image;
         artistName.innerText = trackList[trackIndex].artist;
+        
     }
     
     function playVerify(){
@@ -158,15 +161,45 @@ window.addEventListener("load", function(){
         let volumePercentValue = Math.floor(volumeWidth * 100);
         
         if(volumePercentValue > 0){
+            volumeOn = false;
             audioControl.volume = (parseFloat(volumeWidth.toFixed(2)));
             volumePercent.innerText = `${volumePercentValue}%`;
             currentVolume.style.width = `${volumeWidth * 100}%`;
-        }else{
+            mute.src = "images/volume.png"
+            localStorage.setItem("audioControlVolume", audioControl.volume);
+        } else{
+            volumeOn = true;
             audioControl.volume = 0;
             volumePercent.innerText = "0%";
             currentVolume.style.width = "1%";
+            mute.src = "images/mute.png";
+            localStorage.setItem("audioControlVolume", audioControl.volume);   
         }
-        
+    }
+
+    function volumeVerify(){
+        volumeOn = true;
+        mute.src = "images/mute.png";
+        audioControl.volume = 0;
+    }
+
+    function muteVerify(){
+        let audioControlVolume = localStorage.getItem("audioControlVolume")
+        volumeOn = false;
+        mute.src = "images/volume.png";
+        if(audioControlVolume === null){
+            audioControlVolume = 1;
+        }
+    
+        audioControl.volume = audioControlVolume;  
+    }
+
+    function muteMusic(){
+        if(volumeOn){
+            muteVerify();
+        }else{
+            volumeVerify();
+        }
     }
 
     play.addEventListener("click", function(){
@@ -185,7 +218,6 @@ window.addEventListener("load", function(){
         timeUpdate();
         endMusic();
         
-
         audioControl.addEventListener("loadeddata", function(){
             totalTimeUpdate();
         })
@@ -197,6 +229,10 @@ window.addEventListener("load", function(){
 
     volumeBar.addEventListener("click", function(x){
         selectVolume(x);
+    })
+
+    mute.addEventListener("click", function(){
+        muteMusic();
     })
 }) 
 
