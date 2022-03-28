@@ -31,7 +31,9 @@ window.addEventListener("load", function(){
     const totalTime = document.getElementById("totalTime");
     const playlist = document.getElementById("playlist");
     const volume = document.getElementById("volume");
+    const volumeBar = document.getElementById("volumeBar")
     const currentVolume = document.getElementById("currentVolume");
+    const volumePercent = document.getElementById("currentVolumeValue")
     const shuffle = document.getElementById("shuffle");
     const rewind = document.getElementById("rewind");
     const play = document.getElementById("play");
@@ -76,8 +78,6 @@ window.addEventListener("load", function(){
             loadMusic(currentMusic);
             isPlaying = false;
             playMusic();
-            console.log(currentMusic);
-            console.log(trackList.length);
         } else{
             currentMusic = trackList.length - 1;
             loadMusic(currentMusic);
@@ -151,6 +151,24 @@ window.addEventListener("load", function(){
         }
     }
 
+    function selectVolume(x){
+        let volumeVal = volumeBar.clientWidth;
+        let clickedOffSetX = x.offsetX;
+        let volumeWidth = (clickedOffSetX / volumeVal) ;
+        let volumePercentValue = Math.floor(volumeWidth * 100);
+        
+        if(volumePercentValue > 0){
+            audioControl.volume = (parseFloat(volumeWidth.toFixed(2)));
+            volumePercent.innerText = `${volumePercentValue}%`
+            currentVolume.style.width = `${volumeWidth * 100}%`
+        }else{
+            audioControl.volume = 0;
+            volumePercent.innerText = "0%";
+            currentVolume.style.width = "1%"
+        }
+        
+    }
+
     play.addEventListener("click", function(){
         playMusic();
     })
@@ -166,6 +184,7 @@ window.addEventListener("load", function(){
     audioControl.addEventListener("timeupdate", function(){
         timeUpdate();
         endMusic();
+        
 
         audioControl.addEventListener("loadeddata", function(){
             totalTimeUpdate();
@@ -174,6 +193,10 @@ window.addEventListener("load", function(){
 
     progressBar.addEventListener("click", function(x){
         selectMusicTime(x);
+    })
+
+    volumeBar.addEventListener("click", function(x){
+        selectVolume(x);
     })
 }) 
 
