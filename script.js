@@ -42,6 +42,7 @@ window.addEventListener("load", function(){
 
     let volumeOn = false;
     let isPlaying = false; 
+    let repeatOn = false;
     let currentMusic = 0;
     loadMusic(currentMusic);
     localStorage.clear();
@@ -145,15 +146,6 @@ window.addEventListener("load", function(){
         audioControl.currentTime = (clickedOffSetX / progressVal) * duration;
     }
 
-    function endMusic(){
-        let currentTime = audioControl.currentTime;
-        let duration = audioControl.duration;
-
-        if(currentTime == duration){
-            nextMusic();
-        }
-    }
-
     function selectVolume(x){
         let volumeVal = volumeBar.clientWidth;
         let clickedOffSetX = x.offsetX;
@@ -202,6 +194,25 @@ window.addEventListener("load", function(){
         }
     }
 
+    function repeatVerify(){
+        if(repeatOn){
+            repeatOn = false;
+            repeat.style.backgroundColor = "#FFFFFF"
+        }else{
+            repeatOn = true;
+            repeat.style.backgroundColor = "#5F4BB6"
+        }
+    }
+
+    function repeatMusic(){
+        if(repeatOn){
+            audioControl.currentTime = 0;
+            playVerify();
+        }else{
+            nextMusic();
+        }
+    }
+
     play.addEventListener("click", function(){
         playMusic();
     })
@@ -216,7 +227,6 @@ window.addEventListener("load", function(){
 
     audioControl.addEventListener("timeupdate", function(){
         timeUpdate();
-        endMusic();
         
         audioControl.addEventListener("loadeddata", function(){
             totalTimeUpdate();
@@ -234,6 +244,16 @@ window.addEventListener("load", function(){
     mute.addEventListener("click", function(){
         muteMusic();
     })
+
+    repeat.addEventListener("click", function(){
+        repeatVerify()
+    })
+
+    audioControl.addEventListener("ended", function(){
+        repeatMusic()
+    })
+    
+
 }) 
 
 
