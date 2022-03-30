@@ -46,13 +46,13 @@ body{
 #musicName{
     margin-top: 10px;
     font-size: 25px;
-    color: #4f39b1;
+    color: #8c00ff;
 }
 
 #artistName{
     margin-top: -25px;
     font-size: 25px;
-    color: rgba(116, 85, 255, 0.603);
+    color: rgba(92, 56, 252, 0.699);
 }
 
 #progressBar{
@@ -71,7 +71,7 @@ body{
     margin: auto;
     width: 1px;
     height: 7px;
-    background-color: #5F4BB6;
+    background-color: #8c00ff;
     border-radius: 10px;
     position: relative;
 }
@@ -79,7 +79,7 @@ body{
 #progressBar:hover #progressed:before{
     content: "";
     background-color: #ffffff;
-    border: 2px solid #5F4BB6;
+    border: 2px solid #8c00ff;
     width: 11px;
     height: 11px;
     border-radius: 50%;
@@ -140,7 +140,7 @@ body{
     margin: auto;
     width: 100%;
     height: 4px;
-    background-color: #5F4BB6;
+    background-color: #8c00ff;
     border-radius: 10px;
     position: relative;
 }
@@ -148,7 +148,7 @@ body{
 #volumeBar:hover #currentVolume:before{
     content: "";
     background-color: #ffffff;
-    border: 2px solid #5F4BB6;
+    border: 2px solid #8c00ff;
     width: 7px;
     height: 7px;
     border-radius: 50%;
@@ -170,20 +170,50 @@ body{
     margin-left: 10px;
     width: 34px;
     height: 34px;
-    border: 3px solid #5F4BB6;
-    background-color: #5F4BB6;
+    border: 3px solid #8c00ff;
+    background-color: #8c00ff;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .buttons{
-    border: 3px solid #5F4BB6;
+    border: 3px solid #8c00ff;
     border-radius: 50%;
     margin-right: 10px;
     margin-left: 10px;
     width: 34px;
     height: 34px;
     cursor: pointer;
+}
+
+#musicList{
+    display: none;
+    width: 200px;
+    height: 650px;
+    background: linear-gradient(90deg, #8c00ff 0%, rgb(21, 21, 21) 100%);
+    position: absolute;
+    top: 8%;
+    left: 107%;
+    transform: translate(-28%, -8%);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 8px 6px rgba(0,0,0,0.75);
+   
+}
+
+#musicListDescription{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+#musicListDescription span{
+    cursor: pointer;
+    float: left;
+    padding: 20px;
+    border: 0px solid #FFFFFF;
+    border-bottom-width: 2px;
 }
 
 

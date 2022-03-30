@@ -17,6 +17,19 @@ window.addEventListener("load", function(){
             image: "images/albumCover3.png",
             name: "Quer voar",
             artist: "Matuê"
+        },
+        {
+            audioSrc: "assets/music4.mp3",
+            image: "images/albumCover4.jpg",
+            name: "Broadway Girls",
+            artist: "Lil Durk feat. Morgan Wallen"
+
+        },
+        {
+            audioSrc: "assets/music5.mp3",
+            image: "images/albumCover5.jpg",
+            name: "Escape Plan",
+            artist: "Travis Scott"
         }
     ];
     
@@ -29,7 +42,9 @@ window.addEventListener("load", function(){
     const progressBar = document.getElementById("progressBar")
     const musicTime = document.getElementById("currentTime");
     const totalTime = document.getElementById("totalTime");
-    const playlist = document.getElementById("playlist");
+    const playlistButton = document.getElementById("playlist");
+    const musicList = document.getElementById("musicList");
+    const musicDescription = document.getElementById("musicListDescription");
     const mute = document.getElementById("volume");
     const volumeBar = document.getElementById("volumeBar")
     const currentVolume = document.getElementById("currentVolume");
@@ -40,7 +55,7 @@ window.addEventListener("load", function(){
     const forward = document.getElementById("forward");
     const repeat = document.getElementById("repeat");
 
-    
+    let playlistButtonOn = false;
     let volumeOn = false;
     let isPlaying = false; 
     let shuffleOn = false;
@@ -55,7 +70,6 @@ window.addEventListener("load", function(){
         musicName.innerText = trackList[trackIndex - 1].name;
         image.src = trackList[trackIndex - 1].image;
         artistName.innerText = trackList[trackIndex - 1].artist;
-        
     }
     
     function playVerify(){
@@ -220,7 +234,7 @@ window.addEventListener("load", function(){
             repeat.style.backgroundColor = "#FFFFFF";
         }else{
             repeatOn = true;
-            repeat.style.backgroundColor = "#5F4BB6";
+            repeat.style.backgroundColor = "#8c00ff";
 
             shuffleOn = false;
             shuffle.style.backgroundColor = "#FFFFFF";
@@ -242,10 +256,26 @@ window.addEventListener("load", function(){
             shuffle.style.backgroundColor = "#FFFFFF";
         }else{
             shuffleOn = true;
-            shuffle.style.backgroundColor = "#5F4BB6";
+            shuffle.style.backgroundColor = "#8c00ff";
 
             repeatOn = false;
             repeat.style.backgroundColor = "#FFFFFF";
+        }
+    }
+    
+    function showPlaylist(){
+        if(playlistButtonOn){
+            playlistButtonOn = false;
+            musicList.style.display = "none";
+            playlistButton.src = "images/playslist.png";
+            playlistButton.style.width = "40px"
+            playlistButton.style.height = "40px"
+        } else{
+            playlistButtonOn = true;
+            musicList.style.display = "block";
+            playlistButton.src = "images/close.png";
+            playlistButton.style.width = "30px"
+            playlistButton.style.height = "30px"
         }
     }
 
@@ -292,6 +322,10 @@ window.addEventListener("load", function(){
     audioControl.addEventListener("ended", function(){
         repeatMusic();
     });
+
+    playlistButton.addEventListener("click", function(){
+        showPlaylist();
+    })
     
 }) 
 
