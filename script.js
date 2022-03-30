@@ -40,19 +40,21 @@ window.addEventListener("load", function(){
     const forward = document.getElementById("forward");
     const repeat = document.getElementById("repeat");
 
+    
     let volumeOn = false;
     let isPlaying = false; 
+    let shuffleOn = false;
     let repeatOn = false;
-    let currentMusic = 0;
+    let currentMusic = 1;
     loadMusic(currentMusic);
     localStorage.clear();
 
     function loadMusic(trackIndex){
-        audio.src = trackList[trackIndex].audioSrc;
+        audio.src = trackList[trackIndex - 1].audioSrc;
         audioControl.load();
-        musicName.innerText = trackList[trackIndex].name;
-        image.src = trackList[trackIndex].image;
-        artistName.innerText = trackList[trackIndex].artist;
+        musicName.innerText = trackList[trackIndex - 1].name;
+        image.src = trackList[trackIndex - 1].image;
+        artistName.innerText = trackList[trackIndex - 1].artist;
         
     }
     
@@ -77,13 +79,13 @@ window.addEventListener("load", function(){
     }
 
     function previousMusic(){
-        if(currentMusic > 0){
+        if(currentMusic > 1){
             currentMusic -= 1;
             loadMusic(currentMusic);
             isPlaying = false;
             playMusic();
         } else{
-            currentMusic = trackList.length - 1;
+            currentMusic = trackList.length ;
             loadMusic(currentMusic);
             isPlaying = false;
             playMusic();
@@ -91,14 +93,32 @@ window.addEventListener("load", function(){
     }
 
     function nextMusic(){
-        if(currentMusic < trackList.length - 1){
-            currentMusic += 1;
-            loadMusic(currentMusic);
-            isPlaying = false;
-            playMusic();
+        if(currentMusic < trackList.length){
+            
+            if(shuffleOn){
+                let randomIndex = Math.round(Math.random() * (trackList.length ));
+                
+                do{
+                    randomIndex = Math.round(Math.random() * (trackList.length));
+                    console.log(randomIndex);
+                }while(randomIndex == currentMusic || randomIndex == 0);
+
+                currentMusic = randomIndex;
+                
+                loadMusic(currentMusic);
+                isPlaying = false;
+                playMusic();
+
+
+            }else{
+                currentMusic += 1;
+                loadMusic(currentMusic);
+                isPlaying = false;
+                playMusic();
+            }
         
         } else{
-            currentMusic = 0;
+            currentMusic = 1;
             loadMusic(currentMusic);
             isPlaying = false;
             playMusic();
@@ -157,7 +177,7 @@ window.addEventListener("load", function(){
             audioControl.volume = (parseFloat(volumeWidth.toFixed(2)));
             volumePercent.innerText = `${volumePercentValue}%`;
             currentVolume.style.width = `${volumeWidth * 100}%`;
-            mute.src = "images/volume.png"
+            mute.src = "images/volume.png";
             localStorage.setItem("audioControlVolume", audioControl.volume);
         } else{
             volumeOn = true;
@@ -176,7 +196,7 @@ window.addEventListener("load", function(){
     }
 
     function muteVerify(){
-        let audioControlVolume = localStorage.getItem("audioControlVolume")
+        let audioControlVolume = localStorage.getItem("audioControlVolume");
         volumeOn = false;
         mute.src = "images/volume.png";
         if(audioControlVolume === null){
@@ -197,10 +217,13 @@ window.addEventListener("load", function(){
     function repeatVerify(){
         if(repeatOn){
             repeatOn = false;
-            repeat.style.backgroundColor = "#FFFFFF"
+            repeat.style.backgroundColor = "#FFFFFF";
         }else{
             repeatOn = true;
-            repeat.style.backgroundColor = "#5F4BB6"
+            repeat.style.backgroundColor = "#5F4BB6";
+
+            shuffleOn = false;
+            shuffle.style.backgroundColor = "#FFFFFF";
         }
     }
 
@@ -213,47 +236,63 @@ window.addEventListener("load", function(){
         }
     }
 
+    function shuffleVerify(){
+        if(shuffleOn){
+            shuffleOn = false;
+            shuffle.style.backgroundColor = "#FFFFFF";
+        }else{
+            shuffleOn = true;
+            shuffle.style.backgroundColor = "#5F4BB6";
+
+            repeatOn = false;
+            repeat.style.backgroundColor = "#FFFFFF";
+        }
+    }
+
     play.addEventListener("click", function(){
         playMusic();
-    })
+    });
     
     rewind.addEventListener("click", function(){
         previousMusic();
-    })
+    });
 
     forward.addEventListener("click", function(){
         nextMusic();
-    })
+    });
 
     audioControl.addEventListener("timeupdate", function(){
         timeUpdate();
         
         audioControl.addEventListener("loadeddata", function(){
             totalTimeUpdate();
-        })
-    })
+        });
+    });
 
     progressBar.addEventListener("click", function(x){
         selectMusicTime(x);
-    })
+    });
 
     volumeBar.addEventListener("click", function(x){
         selectVolume(x);
-    })
+    });
 
     mute.addEventListener("click", function(){
         muteMusic();
-    })
+    });
 
     repeat.addEventListener("click", function(){
-        repeatVerify()
-    })
+        repeatVerify();
+    });
+
+    shuffle.addEventListener("click", function(){
+        shuffleVerify();
+    });
 
     audioControl.addEventListener("ended", function(){
-        repeatMusic()
-    })
+        repeatMusic();
+    });
     
-
 }) 
 
 
