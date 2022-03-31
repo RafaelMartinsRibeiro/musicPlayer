@@ -190,7 +190,8 @@ body{
     display: none;
     width: 200px;
     height: 650px;
-    background: linear-gradient(90deg, #8c00ff 0%, rgb(21, 21, 21) 100%);
+    /* background: linear-gradient(90deg, #8c00ff 0%, rgb(21, 21, 21) 100%); */
+    background-color: rgba(0, 0, 0, 0.479);
     position: absolute;
     top: 8%;
     left: 107%;
@@ -212,12 +213,14 @@ body{
     cursor: pointer;
     float: left;
     padding: 20px;
-    border: 0px solid #FFFFFF;
+    border: 0px solid #8c00ff;
     border-bottom-width: 2px;
 }
 
 .selectedMusic{
-    color: red;
+    font-size: 20px;
+    text-shadow: 0 0 1vw #1900ff, 0 0 3vw #1900ff, 0 0 10vw #1900ff, 0 0 10vw #1900ff, 0 0 .4vw #dc8afc, .2vw .2vw .1vw #811281;
+    color: #c128fe;
 }
 
 
