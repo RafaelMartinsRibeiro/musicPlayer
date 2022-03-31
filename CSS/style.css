@@ -216,4 +216,8 @@ body{
     border-bottom-width: 2px;
 }
 
+.selectedMusic{
+    color: red;
+}
+
 
