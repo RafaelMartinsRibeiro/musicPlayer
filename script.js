@@ -172,22 +172,26 @@ function previousMusic(){
     }
 }
 
+function shuffleMusic(){
+    let randomIndex = Math.round(Math.random() * (trackList.length ));
+            
+    do{
+        randomIndex = Math.round(Math.random() * (trackList.length));
+    }while(randomIndex == currentMusic || randomIndex == 0);
+
+    currentMusic = randomIndex;
+    
+    loadMusic(currentMusic);
+    isPlaying = false;
+    selectVerify();
+    playMusic();
+}
+
 function nextMusic(){
     if(currentMusic < trackList.length){
         
         if(shuffleOn){
-            let randomIndex = Math.round(Math.random() * (trackList.length ));
-            
-            do{
-                randomIndex = Math.round(Math.random() * (trackList.length));
-            }while(randomIndex == currentMusic || randomIndex == 0);
-
-            currentMusic = randomIndex;
-            
-            loadMusic(currentMusic);
-            isPlaying = false;
-            playMusic();
-
+            shuffleMusic();
 
         }else{
             currentMusic += 1;
