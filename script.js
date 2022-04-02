@@ -90,8 +90,7 @@ function addMusicList(){
     }
 }
 
-function selectVerify(){
-    
+function selectVerify(){ 
     for(let j = 0; j < allMusicSelect.length; j++){    
         
         let spanIndex = parseInt(allMusicSelect[j].getAttribute("spanIndex"))
@@ -351,55 +350,28 @@ function showPlaylist(){
     }
 }
 
-play.addEventListener("click", function(){
-    playMusic();
-});
+play.addEventListener("click", () => playMusic());
 
-rewind.addEventListener("click", function(){
-    previousMusic();
-});
+rewind.addEventListener("click", () => previousMusic());
 
-forward.addEventListener("click", function(){
-    nextMusic();
-});
+forward.addEventListener("click", () => nextMusic());
 
-audioControl.addEventListener("timeupdate", function(){
+audioControl.addEventListener("timeupdate", () => {
     timeUpdate();
     
-    audioControl.addEventListener("loadeddata", function(){
-        totalTimeUpdate();
-    });
+    audioControl.addEventListener("loadeddata", () => totalTimeUpdate());
 });
 
-progressBar.addEventListener("click", function(x){
-    selectMusicTime(x);
-});
+progressBar.addEventListener("click", (x) => selectMusicTime(x));
 
-volumeBar.addEventListener("click", function(x){
-    selectVolume(x);
-});
+volumeBar.addEventListener("click", (x) => selectVolume(x));
 
-mute.addEventListener("click", function(){
-    muteMusic();
-});
+mute.addEventListener("click", () => muteMusic());
 
-repeat.addEventListener("click", function(){
-    repeatVerify();
-});
+repeat.addEventListener("click", () => repeatVerify());
 
-shuffle.addEventListener("click", function(){
-    shuffleVerify();
-});
+shuffle.addEventListener("click", () => shuffleVerify());
 
-audioControl.addEventListener("ended", function(){
-    repeatMusic();
-});
+audioControl.addEventListener("ended", () => repeatMusic());
 
-playlistButton.addEventListener("click", function(){
-    showPlaylist();
-});
-
-
-
-
-
+playlistButton.addEventListener("click", () => showPlaylist());
